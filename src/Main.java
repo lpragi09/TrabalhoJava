@@ -1,10 +1,10 @@
 public class Main {
     public static void main(String[] args) {
-        // 1) Instanciar: pelo menos dois objetos diferentes do tipo Restaurante
+        // 1) Instanciar: pelo menos dois restaurantes e dois clientes
         Restaurante r1 = new Restaurante();
         Restaurante r2 = new Restaurante();
 
-        // 2) Preencher: atribuir valores manualmente aos atributos de cada objeto
+        // Restaurantes
         r1.nome = "Pizzaria Bella Massa";
         r1.endereco = "Rua das Flores, 123 - Centro";
         r1.categoria = "Pizza";
@@ -13,10 +13,23 @@ public class Main {
         r2.endereco = "Av. Principal, 987 - Jardim";
         r2.categoria = "Japonesa";
 
-        // 3) Testar: exibir os dados de ambos os restaurantes no console
-        r1.exibirDados();
-        System.out.println();
-        r2.exibirDados();
+        Cliente c1 = new Cliente();
+        Cliente c2 = new Cliente();
+
+        // Clientes
+        c1.nome = "Ana Souza";
+        c1.telefone = "(11) 99999-1111";
+
+        c2.nome = "Bruno Lima";
+        c2.telefone = "(11) 98888-2222";
+
+        // 2) Processar: criar pedidos associando clientes e restaurantes
+        SistemaDelivery sistema = new SistemaDelivery();
+        sistema.criarPedido(c1, r1, 79.90);
+        sistema.criarPedido(c2, r2, 112.50);
+
+        // 3) Relatório: listar pedidos cadastrados
+        sistema.listarPedidos();
     }
 }
 
