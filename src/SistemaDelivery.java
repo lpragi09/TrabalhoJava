@@ -4,11 +4,7 @@ public class SistemaDelivery {
     private final ArrayList<Pedido> pedidos = new ArrayList<>();
 
     public Pedido criarPedido(Cliente c, Restaurante r, double valor) {
-        Pedido p = new Pedido();
-        p.cliente = c;
-        p.restaurante = r;
-        p.valorTotal = valor;
-
+        Pedido p = new Pedido(c, r, valor);
         pedidos.add(p);
         return p;
     }
@@ -21,9 +17,13 @@ public class SistemaDelivery {
             return;
         }
 
-        for (int i = 0; i < pedidos.size(); i++) {
-            System.out.println("#" + (i + 1));
-            System.out.println(pedidos.get(i).toString());
+        for (Pedido p : pedidos) {
+            System.out.println(
+                    "Pedido #" + p.getId() +
+                            " | Cliente: " + p.getCliente().getNome() +
+                            " | Restaurante: " + p.getRestaurante().getNome() +
+                            " | Valor Total: R$ " + String.format("%.2f", p.getValorTotal())
+            );
         }
     }
 }

@@ -1,34 +1,40 @@
 public class Main {
     public static void main(String[] args) {
-        // 1) Instanciar: pelo menos dois restaurantes e dois clientes
-        Restaurante r1 = new Restaurante();
-        Restaurante r2 = new Restaurante();
+        // 1) Criar objetos utilizando os novos construtores (nascem válidos)
+        Restaurante r1 = new Restaurante(
+                "Pizzaria Bella Massa",
+                "Rua das Flores, 123 - Centro",
+                "Pizza"
+        );
 
-        // Restaurantes
-        r1.nome = "Pizzaria Bella Massa";
-        r1.endereco = "Rua das Flores, 123 - Centro";
-        r1.categoria = "Pizza";
+        Restaurante r2 = new Restaurante(
+                "Sushi do Bairro",
+                "Av. Principal, 987 - Jardim",
+                "Japonesa"
+        );
 
-        r2.nome = "Sushi do Bairro";
-        r2.endereco = "Av. Principal, 987 - Jardim";
-        r2.categoria = "Japonesa";
+        Cliente c1 = new Cliente("Ana Souza", "(11) 99999-1111");
+        Cliente c2 = new Cliente("Bruno Lima", "(11) 98888-2222");
 
-        Cliente c1 = new Cliente();
-        Cliente c2 = new Cliente();
-
-        // Clientes
-        c1.nome = "Ana Souza";
-        c1.telefone = "(11) 99999-1111";
-
-        c2.nome = "Bruno Lima";
-        c2.telefone = "(11) 98888-2222";
-
-        // 2) Processar: criar pedidos associando clientes e restaurantes
+        // 2) Processar: utilizar o SistemaDelivery para criar pedidos
         SistemaDelivery sistema = new SistemaDelivery();
         sistema.criarPedido(c1, r1, 79.90);
         sistema.criarPedido(c2, r2, 112.50);
 
-        // 3) Relatório: listar pedidos cadastrados
+        // (Opcional) Testar validações: tentar criar/alterar dados inválidos
+        try {
+            sistema.criarPedido(c1, r1, -10.0);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Falha esperada ao criar pedido inválido: " + e.getMessage());
+        }
+
+        try {
+            c1.setNome("   ");
+        } catch (IllegalArgumentException e) {
+            System.out.println("Falha esperada ao alterar cliente inválido: " + e.getMessage());
+        }
+
+        // 3) Relatório: exibir os pedidos cadastrados (ID, nomes e valor)
         sistema.listarPedidos();
     }
 }
