@@ -1,10 +1,16 @@
+package br.com.seuprojeto.service;
+
+import br.com.seuprojeto.model.Cliente;
+import br.com.seuprojeto.model.Pedido;
+import br.com.seuprojeto.model.Restaurante;
+
 import java.util.ArrayList;
 
 public class SistemaDelivery {
     private final ArrayList<Pedido> pedidos = new ArrayList<>();
 
-    public Pedido criarPedido(Cliente c, Restaurante r, double valor) {
-        Pedido p = new Pedido(c, r, valor);
+    public Pedido criarPedido(Cliente cliente, Restaurante restaurante, double valorTotal, Entregavel entregavel) {
+        Pedido p = new Pedido(cliente, restaurante, valorTotal, entregavel);
         pedidos.add(p);
         return p;
     }

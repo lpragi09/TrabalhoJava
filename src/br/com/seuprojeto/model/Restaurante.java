@@ -1,5 +1,6 @@
+package br.com.seuprojeto.model;
+
 public class Restaurante {
-    // Atributos (variáveis) - semana 3: encapsulamento (private)
     private String nome;
     private String endereco;
     private String categoria; // Ex: Pizza, Lanches, Japonesa
@@ -14,7 +15,6 @@ public class Restaurante {
         return nome;
     }
 
-    // Faz sentido permitir alterar nome? Aqui vamos permitir, mas mantendo validação.
     public void setNome(String nome) {
         if (nome == null || nome.trim().isEmpty()) {
             throw new IllegalArgumentException("Nome do restaurante não pode ser vazio.");
@@ -44,18 +44,17 @@ public class Restaurante {
         this.categoria = categoria.trim();
     }
 
-    // Método para exibir as informações do restaurante no console
     public void exibirDados() {
         System.out.println(this.toString());
     }
 
     @Override
     public String toString() {
-        return "Restaurante {" +
-                "\n  Nome: " + nome +
-                "\n  Endereço: " + endereco +
-                "\n  Categoria: " + categoria +
-                "\n}";
+        return "Restaurante {"
+                + "\n  Nome: " + nome
+                + "\n  Endereço: " + endereco
+                + "\n  Categoria: " + categoria
+                + "\n}";
     }
 }
 

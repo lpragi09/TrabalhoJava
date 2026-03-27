@@ -1,4 +1,6 @@
-public class Usuario {
+package br.com.seuprojeto.model;
+
+public abstract class Usuario {
     private String nome;
     private String email;
     private String telefone;

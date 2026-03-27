@@ -1,3 +1,5 @@
+package br.com.seuprojeto.model;
+
 public class Entregador extends Usuario {
     private String veiculo;
 
@@ -19,10 +21,10 @@ public class Entregador extends Usuario {
 
     @Override
     public String descrever() {
-        return "Entregador: " + getNome() +
-                " | Email: " + getEmail() +
-                " | Telefone: " + getTelefone() +
-                " | Veículo: " + veiculo;
+        return "Entregador: " + getNome()
+                + " | Email: " + getEmail()
+                + " | Telefone: " + getTelefone()
+                + " | Veículo: " + veiculo;
     }
 }
 
